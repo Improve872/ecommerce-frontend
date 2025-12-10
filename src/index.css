@@ -1,0 +1,10 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  /* El fondo de la aplicación DEBE ser CLARO (blanco o gris claro) */
+  background-color: #f7f7f7; /* <-- Sugiero un gris muy claro, o 'white' */
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
