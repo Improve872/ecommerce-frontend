@@ -11,7 +11,7 @@ const OrderDetailView = () => {
 
   useEffect(() => {
     ordersService
-      .getOrderDetail(id) // ✅ nombre correcto
+      .getOrderDetail(id)
       .then((response) => {
         setOrder(response.data);
       })

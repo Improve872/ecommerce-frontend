@@ -1,4 +1,3 @@
-// 📁 src/components/OrdersView.jsx
 import React, { useEffect, useState } from "react";
 import ordersService from "../services/orders.service";
 import { Link } from "react-router-dom";

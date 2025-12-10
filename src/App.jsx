@@ -1,4 +1,3 @@
-// 📁 src/App.jsx (CÓDIGO CORREGIDO CON REGISTERVIEW)
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
@@ -14,7 +13,7 @@ import HomeView from "./components/HomeView.jsx";
 import ProductDetailView from "./components/ProductDetailView.jsx";
 import CartView from "./components/CartView.jsx";
 import LoginView from "./components/LoginView.jsx";
-import RegisterView from "./components/RegisterView.jsx"; // ✅ Importamos RegisterView
+import RegisterView from "./components/RegisterView.jsx";
 import ProfileView from "./components/ProfileView.jsx";
 import AdminView from "./components/AdminView.jsx";
 import AdminRoute from "./components/AdminRoute.jsx";
@@ -25,12 +24,10 @@ function App() {
       <CartProvider>
         <Header />
 
-        {/* 🛑 CORRECCIÓN: ELIMINAR 'pt-20' para que el HeroSection se pegue al Header. */}
+        {/*  correcion para que el HeroSection se pegue al Header. */}
         <div className="flex-grow">
           <Routes>
-            {/* ======================================================= */}
-            {/* RUTAS PÚBLICAS Y DE CLIENTES */}
-            {/* ======================================================= */}
+            {/* rutas publicas y de cliente*/}
             <Route path="/" element={<HomeView />} />
             <Route path="/product/:id" element={<ProductDetailView />} />
             <Route path="/cart" element={<CartView />} />
@@ -40,16 +37,11 @@ function App() {
             {/* Rutas de Autenticación */}
             <Route path="/auth/login" element={<LoginView />} />
             <Route path="/auth/register" element={<RegisterView />} />{" "}
-            {/* ✅ RegisterView */}
-            {/* ======================================================= */}
             {/* RUTAS PROTEGIDAS POR ROL ADMIN */}
-            {/* ======================================================= */}
             <Route element={<AdminRoute />}>
               <Route path="/admin" element={<AdminView />} />
             </Route>
-            {/* ======================================================= */}
             {/* RUTA FALLBACK (404) */}
-            {/* ======================================================= */}
             <Route
               path="*"
               element={

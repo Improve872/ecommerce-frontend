@@ -1,5 +1,3 @@
-// 📁 src/components/RegisterView.jsx
-
 import React, { useState } from "react";
 import { User, Lock, ArrowRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
@@ -20,22 +18,22 @@ const RegisterView = () => {
     setError("");
 
     try {
-      // 1️⃣ Llamada al backend para registrar
+      // llamada al backend para registrar
       await AuthService.register(nombre, email, password);
 
-      // 2️⃣ Login automático después del registro
+      // login autometico despues del registro
       await login(email, password);
 
-      // 3️⃣ Limpiar campos
+      // limpiar campos
       setNombre("");
       setEmail("");
       setPassword("");
 
-      // 4️⃣ Redirigir a home
+      // redirigir a home
       navigate("/");
     } catch (err) {
       console.error("Error en registro:", err);
-      // 🔹 Mostrar mensaje directamente del backend o genérico
+      // mensaje generico
       setError(err.response?.data || "Error al registrar. Verifica tus datos.");
     }
   };
@@ -61,7 +59,7 @@ const RegisterView = () => {
             </div>
           )}
 
-          {/* CAMPO NOMBRE */}
+          {/* campo nombre */}
           <div>
             <label
               htmlFor="nombre"
@@ -85,7 +83,7 @@ const RegisterView = () => {
             </div>
           </div>
 
-          {/* CAMPO EMAIL */}
+          {/* campo email */}
           <div>
             <label
               htmlFor="email"
@@ -109,7 +107,7 @@ const RegisterView = () => {
             </div>
           </div>
 
-          {/* CAMPO CONTRASEÑA */}
+          {/* campo contraseña */}
           <div>
             <label
               htmlFor="password"
@@ -133,7 +131,7 @@ const RegisterView = () => {
             </div>
           </div>
 
-          {/* BOTÓN REGISTRAR */}
+          {/* boton registrar */}
           <button
             type="submit"
             className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-lg text-sm font-medium text-white bg-amber-500 hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition duration-150"
@@ -143,7 +141,7 @@ const RegisterView = () => {
           </button>
         </form>
 
-        {/* LINK A LOGIN */}
+        {/* link a login */}
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
             ¿Ya tienes cuenta?{" "}

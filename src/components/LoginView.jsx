@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"; // 🛑 IMPORTAR useEffect
+import React, { useState, useEffect } from "react";
 import { User, Lock, ArrowRight } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
@@ -11,20 +11,18 @@ const LoginView = () => {
   const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
-  // 🛑 1. SOLUCIÓN: Usar useEffect para la redirección
-  // Este efecto se ejecutará *después* de que el render haya terminado.
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/", { replace: true }); // Se recomienda 'replace: true' para no dejar la página de login en el historial
+      navigate("/", { replace: true });
     }
-  }, [isAuthenticated, navigate]); // Depende de isAuthenticated y navigate
+  }, [isAuthenticated, navigate]);
 
-  // Si ya estás autenticado, el componente no se renderiza (opcional, pero limpio)
+  // Si ya estás autenticado, el componente no se renderiza
   if (isAuthenticated) {
     return null;
   }
 
-  // 2. FUNCIÓN PARA LLAMAR AL BACKEND (sin cambios, es correcta)
+  // funcion para llamar al backend
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -34,9 +32,6 @@ const LoginView = () => {
 
     try {
       await login(correo, contrasena);
-
-      // 🛑 La redirección AQUI ya NO es necesaria.
-      // Se manejará automáticamente por el useEffect una vez que 'isAuthenticated' cambie.
     } catch (err) {
       setError("Fallo el inicio de sesión. Verifica tu correo y contraseña.");
       console.error("Error de autenticación:", err);
@@ -44,11 +39,9 @@ const LoginView = () => {
   };
 
   return (
-    // ... (El resto del return con el formulario, sin cambios) ...
-
     <div className="min-h-screen flex items-start justify-center pt-24 bg-gray-50">
       <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-2xl border border-gray-100">
-        {/* TÍTULO */}
+        {/* titulo */}
         <div className="text-center mb-8">
           <User className="w-10 h-10 text-amber-500 mx-auto mb-2" />
           <h2 className="text-3xl font-bold text-gray-900">Iniciar Sesión</h2>
@@ -57,9 +50,9 @@ const LoginView = () => {
           </p>
         </div>
 
-        {/* FORMULARIO */}
+        {/* formulario */}
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* 🛑 MOSTRAR MENSAJE DE ERROR */}
+          {/* mensaje de error */}
           {error && (
             <div
               className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative"
@@ -68,7 +61,7 @@ const LoginView = () => {
               <span className="block sm:inline">{error}</span>
             </div>
           )}
-          {/* CAMPO EMAIL */}
+          {/* campo email */}
           <div>
             <label
               htmlFor="email"
@@ -92,7 +85,7 @@ const LoginView = () => {
             </div>
           </div>
 
-          {/* CAMPO CONTRASEÑA */}
+          {/* campo contraseña */}
           <div>
             <label
               htmlFor="password"
@@ -116,7 +109,7 @@ const LoginView = () => {
             </div>
           </div>
 
-          {/* BOTÓN SUBMIT */}
+          {/* boton submit */}
           <button
             type="submit"
             className="w-full flex justify-center items-center py-3 px-4 border border-transparent rounded-md shadow-lg text-sm font-medium text-white bg-amber-500 hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-amber-500 transition duration-150"
@@ -126,7 +119,7 @@ const LoginView = () => {
           </button>
         </form>
 
-        {/* LINK A REGISTRO */}
+        {/* link a registro */}
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
             ¿No tienes cuenta?{" "}

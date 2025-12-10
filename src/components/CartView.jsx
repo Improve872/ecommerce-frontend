@@ -198,9 +198,7 @@ const CartView = () => {
               </span>
                          {" "}
             </div>
-                                   {" "}
-            {/* BOTÓN GENERAR PEDIDO (Con margen superior reducido) */}         
-             {" "}
+                                    {/* boton generar pedido */}           {" "}
             <button
               onClick={handleCheckout}
               className="mt-4 w-full flex items-center justify-center space-x-2 bg-amber-500 text-white py-3 rounded-lg text-lg font-bold hover:bg-amber-600 transition duration-300 shadow-lg"

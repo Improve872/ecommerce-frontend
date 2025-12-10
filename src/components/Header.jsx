@@ -1,4 +1,3 @@
-// 📁 src/components/Header.jsx (CÓDIGO FINAL CON SINTAXIS ASEGURADA Y CORRECCIÓN VISUAL)
 import React, { useState } from "react";
 import { ShoppingCart, User, Search, X, LogOut } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
@@ -41,11 +40,9 @@ const Header = () => {
     }
   };
   return (
-    // 🛑 ESTA ES LA LÍNEA CRÍTICA. Asegurada sin comentarios de bloque JSX antes.
-
     <header className="bg-stone-900 text-white shadow-lg fixed w-full z-20 top-0 left-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-        {/* Logo / Marca */}
+        {/* logo, marca */}
 
         <Link
           to="/"
@@ -54,7 +51,7 @@ const Header = () => {
           URBAN STYLE
         </Link>
 
-        {/* Navegación Central (Categorías) */}
+        {/* navegacion categorias */}
 
         <nav className="hidden md:flex space-x-6">
           <Link
@@ -79,10 +76,10 @@ const Header = () => {
           </Link>
         </nav>
 
-        {/* Íconos de Usuario, Carrito y Logout */}
+        {/* iconos de usuario carrito logout */}
 
         <div className="flex space-x-4 items-center">
-          {/* Botón de Búsqueda */}
+          {/* boton de busqueda */}
 
           <button
             onClick={() => setIsSearchOpen(!isSearchOpen)}
@@ -91,7 +88,7 @@ const Header = () => {
             <Search className="w-5 h-5" />
           </button>
 
-          {/* ENLACE INTELIGENTE DE USUARIO/ADMIN/CLIENTE */}
+          {/* enlace de USUARIO/ADMIN/CLIENTE */}
 
           <Link
             to={userLinkTo}
@@ -100,7 +97,7 @@ const Header = () => {
             <User className="w-5 h-5" />
           </Link>
 
-          {/* ÍCONO DE CARRITO (Siempre visible) */}
+          {/* icono de carrito */}
 
           <Link
             to="/cart"
@@ -109,7 +106,7 @@ const Header = () => {
             <ShoppingCart className="w-5 h-5" />
           </Link>
 
-          {/* BOTÓN DE LOGOUT (Solo visible si está logueado) */}
+          {/* boton de logout visible si estas logueado */}
 
           {isAuthenticated && (
             <button
@@ -123,7 +120,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* BARRA DE BÚSQUEDA FLOTANTE */}
+      {/* barra de busqueda */}
 
       {isSearchOpen && (
         <div className="absolute top-full left-0 w-full bg-stone-800 shadow-xl py-3 px-4 transition-all duration-300">
