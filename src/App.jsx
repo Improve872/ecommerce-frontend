@@ -2,6 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { CartProvider } from "./context/CartContext.jsx";
+import ToastNotification from "./components/ToastNotification.jsx";
 import OrdersView from "./components/OrdersView.jsx";
 import OrderDetailView from "./components/OrderDetailView.jsx";
 // === Componentes de Layout y Navegación ===
@@ -10,6 +11,7 @@ import Footer from "./components/Footer.jsx";
 
 // === Vistas / Páginas (Todas dentro de /components) ===
 import HomeView from "./components/HomeView.jsx";
+import ProductsView from "./components/ProductsView.jsx";
 import ProductDetailView from "./components/ProductDetailView.jsx";
 import CartView from "./components/CartView.jsx";
 import LoginView from "./components/LoginView.jsx";
@@ -23,12 +25,14 @@ function App() {
     <div className="flex flex-col min-h-screen max-w-full mx-auto">
       <CartProvider>
         <Header />
+        <ToastNotification />
 
         {/*  correcion para que el HeroSection se pegue al Header. */}
         <div className="flex-grow">
           <Routes>
             {/* rutas publicas y de cliente*/}
             <Route path="/" element={<HomeView />} />
+            <Route path="/products" element={<ProductsView />} />
             <Route path="/product/:id" element={<ProductDetailView />} />
             <Route path="/cart" element={<CartView />} />
             <Route path="/profile" element={<ProfileView />} />

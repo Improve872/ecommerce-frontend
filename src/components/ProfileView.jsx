@@ -6,7 +6,6 @@ import { User } from "lucide-react";
 import { Navigate } from "react-router-dom";
 
 const ProfileView = () => {
-  // 🛑 CORRECCIÓN CLAVE: Cambiar 'currentUser' por 'user'
   const { user, isAuthenticated } = useAuth();
 
   if (!isAuthenticated) {
@@ -57,8 +56,8 @@ const ProfileView = () => {
             </p>
                      {" "}
           </div>
-                    {/* 🔥 CAMBIO PEDIDO → agregar enlace "Mis pedidos" */}     
-             {" "}
+                    {/* cambio pedido → agregar enlace "Mis pedidos" */}       
+           {" "}
           <p className="pt-4 text-center text-sm text-gray-600">
                        {" "}
             <a

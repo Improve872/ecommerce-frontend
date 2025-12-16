@@ -1,10 +1,8 @@
-// 📁 src/http-common.js
-
 import axios from "axios";
 
 const API_BASE_URL = "http://localhost:8080/api/v1/";
 
-// --- Función segura para obtener el user del localStorage ---
+// Función segura para obtener el user del localStorage
 function getStoredUser() {
   try {
     const raw = localStorage.getItem("user");

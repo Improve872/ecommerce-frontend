@@ -40,8 +40,20 @@ const getOrderDetail = (pedidoId) => {
   });
 };
 
+const deleteOrder = (pedidoId) => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = user?.token;
+
+  return api.delete(`/pedidos/${pedidoId}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 export default {
   createOrder,
   getMyOrders,
   getOrderDetail,
+  deleteOrder,
 };

@@ -7,10 +7,34 @@ const OrdersView = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    ordersService.getMyOrders().then((res) => {
-      setOrders(res.data);
-    });
+    ordersService
+      .getMyOrders()
+      .then((res) => {
+        setOrders(res.data);
+      })
+      .catch(() => {
+        const demo = localStorage.getItem("demo_orders");
+        setOrders(demo ? JSON.parse(demo) : []);
+      });
   }, []);
+
+  const handleDelete = async (orderId) => {
+    const ok = window.confirm("¿Eliminar este pedido?");
+    if (!ok) return;
+
+    try {
+      await ordersService.deleteOrder(orderId);
+      setOrders((prev) => prev.filter((o) => String(o.id) !== String(orderId)));
+    } catch (e) {
+      // fallback: remove from local demo orders
+      const demoKey = "demo_orders";
+      const demo = localStorage.getItem(demoKey);
+      const list = demo ? JSON.parse(demo) : [];
+      const newList = list.filter((o) => String(o.id) !== String(orderId));
+      localStorage.setItem(demoKey, JSON.stringify(newList));
+      setOrders(newList);
+    }
+  };
 
   return (
     <div className="container mx-auto pt-24 p-6 min-h-screen">
@@ -42,13 +66,21 @@ const OrdersView = () => {
                 </p>
               </div>
 
-              <Link
-                to={`/orders/${order.id}`}
-                className="flex items-center gap-2 text-amber-600 hover:text-amber-700"
-              >
-                Ver Detalle
-                <ArrowRight className="w-5 h-5" />
-              </Link>
+              <div className="flex items-center gap-3">
+                <Link
+                  to={`/orders/${order.id}`}
+                  className="flex items-center gap-2 text-amber-600 hover:text-amber-700"
+                >
+                  Ver Detalle
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+                <button
+                  onClick={() => handleDelete(order.id)}
+                  className="px-3 py-1 bg-red-50 text-red-600 rounded"
+                >
+                  Eliminar
+                </button>
+              </div>
             </div>
           ))}
         </div>

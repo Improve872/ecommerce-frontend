@@ -1,8 +1,6 @@
-// 📁 src/services/auth.service.js (o hooks/useAuth.js si prefieres)
-
 import axios from "axios";
 
-// 🛑 IMPORTANTE: Define la URL base de tu Backend
+// Define la URL base del backend
 
 const API_URL = "http://localhost:8080/api/v1/auth/";
 
@@ -16,17 +14,17 @@ const login = async (correo, contrasena) => {
       contrasena,
     });
 
-    // 🛑 Si el login es exitoso, la respuesta contiene el Token
+    //  Si el login es exitoso, la respuesta contiene el Token
 
     if (response.data.token) {
-      // 1. Guardar el objeto completo del usuario (incluyendo el token) en localStorage
+      // Guardar el objeto completo del usuario (incluyendo el token) en localStorage
 
       localStorage.setItem("user", JSON.stringify(response.data));
     }
 
     return response.data;
   } catch (error) {
-    // Manejo de errores (ej. 401 UNAUTHORIZED)
+    // Manejo de errores ej. 401 UNAUTHORIZED
 
     console.error("Error en login:", error.response || error);
 

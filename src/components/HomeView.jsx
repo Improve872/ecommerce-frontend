@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import HeroSection from "./HeroSection";
+import PromoCarousel from "./PromoCarousel";
 import ProductGrid from "./ProductGrid";
 
 // URL para la conexión al backend
@@ -13,7 +14,7 @@ const productsData = [
     name: "Chaqueta de Cuero Premium",
     category: "Ropa",
     price: 189.99,
-    imageUrl: "ruta/temporal/chaqueta.jpg",
+    imageUrl: "https://saratex.cl/wp-content/uploads/2023/12/1.jpg",
     description: "Chaqueta de cuero genuino, estilo clásico y corte slim fit.",
   },
   {
@@ -21,7 +22,8 @@ const productsData = [
     name: "Reloj de Pulsera Minimalista",
     category: "Accesorios",
     price: 75.0,
-    imageUrl: "ruta/temporal/reloj.jpg",
+    imageUrl:
+      "https://tse3.mm.bing.net/th/id/OIP.fUpd-URzpOeYAqu20XKL3QHaHa?cb=ucfimg2&ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3",
     description: "Reloj elegante con correa de malla y diseño minimalista.",
   },
   {
@@ -29,7 +31,8 @@ const productsData = [
     name: "Auriculares Inalámbricos Pro X",
     category: "Tecnología",
     price: 150.0,
-    imageUrl: "ruta/temporal/auriculares.jpg",
+    imageUrl:
+      "https://i.pinimg.com/736x/20/c3/83/20c3839c00190714a5d76b5f4e44a0c6.jpg",
     description:
       "Auriculares con cancelación de ruido activa y 30 horas de batería.",
   },
@@ -38,7 +41,8 @@ const productsData = [
     name: "Camisa Oxford Clásica",
     category: "Ropa",
     price: 45.99,
-    imageUrl: "ruta/temporal/camisa.jpg",
+    imageUrl:
+      "https://tse1.mm.bing.net/th/id/OIP.Pb4LJyKM83RBHzRMy61fHwHaHa?cb=ucfimg2&pid=ImgDet&ucfimg=1&w=190&h=190&c=7&o=7&rm=3",
     description:
       "Camisa de algodón Oxford 100%, ideal para un look formal o casual.",
   },
@@ -47,7 +51,8 @@ const productsData = [
     name: "Correa de Cuero Elegante",
     category: "Accesorios",
     price: 30.0,
-    imageUrl: "ruta/temporal/correa.jpg",
+    imageUrl:
+      "https://dcuero.online/wp-content/uploads/2018/10/renzocosta-cuero-correa-hombre-marron-bn17-03..jpg",
     description: "Correa de cuero premium para cualquier ocasión.",
   },
   {
@@ -55,7 +60,8 @@ const productsData = [
     name: "Smartwatch Deportivo",
     category: "Tecnología",
     price: 99.99,
-    imageUrl: "ruta/temporal/smartwatch.jpg",
+    imageUrl:
+      "https://img.freepik.com/fotos-premium/smartwatch-blanco-seguimiento-fitness-fondo-dinamico-prueba-agua_979568-2487.jpg",
     description: "Reloj inteligente con GPS y monitor de ritmo cardíaco.",
   },
 ];
@@ -151,6 +157,13 @@ const HomeView = () => {
   return (
     <>
       <HeroSection />
+
+      {/* Carrusel promocional */}
+      <section className="bg-gray-900 py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <PromoCarousel />
+        </div>
+      </section>
 
       {/* seccion de productos destacados */}
       <section className="bg-gray-100 py-16">

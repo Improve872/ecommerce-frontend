@@ -1,7 +1,8 @@
 import React from "react";
 import ProductCard from "./ProductCard";
+import SkeletonCard from "./SkeletonCard";
 
-const products = [
+const defaultProducts = [
   {
     id: "101",
     name: "Chaqueta de Cuero Premium",
@@ -33,9 +34,36 @@ const products = [
     imageUrl:
       "https://tse1.mm.bing.net/th/id/OIP.Pb4LJyKM83RBHzRMy61fHwHaHa?cb=ucfimg2&pid=ImgDet&ucfimg=1&w=190&h=190&c=7&o=7&rm=3",
   },
+  {
+    id: "505",
+    name: "Correa de Cuero Elegante",
+    price: 30.0,
+    category: "Accesorios",
+    imageUrl:
+      "https://dcuero.online/wp-content/uploads/2018/10/renzocosta-cuero-correa-hombre-marron-bn17-03..jpg",
+  },
+  {
+    id: "606",
+    name: "Smartwatch Deportivo",
+    price: 99.99,
+    category: "Tecnología",
+    imageUrl:
+      "https://img.freepik.com/fotos-premium/smartwatch-blanco-seguimiento-fitness-fondo-dinamico-prueba-agua_979568-2487.jpg",
+  },
 ];
 
-const ProductGrid = () => {
+const ProductGrid = ({ products = defaultProducts, loading = false }) => {
+  if (loading) {
+    const placeholders = new Array(8).fill(0);
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4 sm:px-6 lg:px-8">
+        {placeholders.map((_, i) => (
+          <SkeletonCard key={`s-${i}`} />
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4 sm:px-6 lg:px-8">
       {products.map((product) => (
